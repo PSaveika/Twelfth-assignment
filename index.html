@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Povilas Saveika | Twelfth assignment | JS</title>
+</head>
+<body>
+
+    <h1>JavaScript | Twelfth assignment</h1>
+
+    <div class="wrap">
+        <div class="left">
+            <code><span class="comment">// Pirma užduotis //</span><br>
+
+                var PVM = 21,       <span class="comment">//PVM</span><br>
+                    <span class="m-28">commodityPrice,</span>  <span class="comment">//prekės kaina</span><br>
+                    <span class="m-28">pricePVM,</span>     <span class="comment">//PVM kaina</span><br>
+                    <span class="m-28">priceWithPVM;</span>   <span class="comment">//kaina su PVM</span><br>
+                var whileNotNumber = false;<br>
+                var RegularExpression = /^[0-9]*\.?[0-9]*$/; <span class="comment">// ^ ir $ - string pradžia ir pabaiga; * 0 arba daugiau simboliu; [0-9]* 0 arba daugiau skaičių; \. jeigu nebūtų "\" prieš tašką, tai . reikštų 'bent kurį simbolį';</span><br>
+                <span class="comment">//expression su neigiamais skaičiais /^[0-9-]*\.?[0-9]*$/</span><br>
+                <span class="comment">//expression neleidžiant, kad būtų vien tik taškas /^[0-9-]+\.?[0-9]*$/</span><br><br> 
+                
+                while(!whileNotNumber) {<br>
+                    <span class="comment">//prašo įvesti prekės kainą</span><br>
+                    <span class="m-28">commodityPrice = prompt("Įveskite prekės kainą: ");</span><br>
+                    <span class="comment">//jeigu reikšmė atitinka aprašytą, tuomet kintamąjį konvertuoją į float tipą</span><br>
+                    <span class="m-28">if(commodityPrice.match(RegularExpression)) {</span><br>
+                        <span class="comment">//+ konvertuoja į skaičių</span><br>
+                        <span class="m-56">commodityPrice = +commodityPrice;</span><br>
+                        <span class="comment">//jeigu kaina lygi 0, įspėja, kad įvesta reikšmė negali būti mažesnė ar lygi 0</span><br>
+                        <span class="m-56">if (commodityPrice <= 0)</span> {<br>
+                            <span class="m-84">console.log("Įvestas skaicius negali būti mažesnis arba lygus nuliui. Įveskite kainą iš naujo! ");</span><br>
+                        <span class="m-56">} else {</span><br>
+                            <span class="comment">//kitu atveju jei kaina yra didesnė nei 0, yra sustabdomas while ciklas</span><br>
+                            <span class="m-84">whileNotNumber = true;</span><br>
+                            <span class="m-56">}</span><br>   
+                    <span class="m-28">} else {</span><br>
+                        <span class="comment">//jeigu buvo panaudotos raidės ar kiti simboliai be (.), yra atspausdinamas įspėjimas</span><br>
+                        <span class="m-56">console.log("Ivesta reikšmė naudoja neleistinus simbolius. Bandykite dar kartą!")</span><br>
+                    <span class="m-28">}</span><br>
+                }<br><br>
+                
+                <span class="comment">//Skaičiuojama PVM kaina</span><br>
+                pricePVM = (21/100)*commodityPrice;<br>
+                <span class="comment">//Galutinė kaina su PVM</span><br>
+                priceWithPVM = commodityPrice+pricePVM;<br>
+                
+                console.log("Prekės kaina su PVM: " + priceWithPVM.toFixed(2) + " €")<br>
+                console.log("PVM: " + pricePVM.toFixed(2) + " €")<br>
+                console.log("Prekės kaina be PVM: " + commodityPrice.toFixed(2) + " €")<br><br>
+                
+                <span class="comment">//------//</span><br><br>
+                
+                <span class="comment">// Antra užduotis //</span><br>
+                var GoTnames = ["Jon Snow", "Cersei Lannister", "Daenerys Targaryen", "Theon Greyjoy", "Tyrion Lannister", "Arya Stark"];<br>
+                var firstName = GoTnames[0],<br>
+                    <span class="m-28">lastName = GoTnames[GoTnames.length-1];</span><br><br>
+                
+                console.log("Pirmas vardas masyve yra: " + firstName + "\nPaskutinis vardas masyve yra: " + lastName);<br><br>
+                
+                
+                <span class="comment">//vartotojo įvestas skaičius //</span><br>
+                var insertedNumber;<br>
+                var whileNotArrayNumber = false;<br>
+                var numberCheck = /^[0-9]$/;<br><br>
+                
+                while(!whileNotArrayNumber) {<br>
+                    <span class="m-28">insertedNumber = prompt("Iveskite skaičių nuo 1 iki " + GoTnames.length + ", kad būtų atspausintas masyvo elementas.")</span><br>
+                
+                    <span class="m-28">if(insertedNumber.match(numberCheck)) {</span><br>
+                        <span class="m-56">if(insertedNumber <= 0  || insertedNumber > GoTnames.length) {</span><br>
+                            <span class="m-84">console.log("Buvo įvestas netinkamas skaičius. Įveskite teigiamą sveikąjį skaičių nuo 1 iki " + GoTnames.length)</span><br>
+                        <span class="m-56">} else {</span><br>
+                
+                            <span class="m-84">whileNotArrayNumber = true;</span><br>
+                        <span class="m-56">}</span><br>
+                        
+                    <span class="m-28">}</span><br>
+                }<br><br>
+                
+                console.log("Įvestas numeris masyve atitinka personažą: " + GoTnames[insertedNumber-1]);<br><br>
+                
+                
+                
+                <span class="comment">// ==== PAPILDOMAI ======= //</span><br><br>
+                
+                var skaiciuMasyvas = [7, 9, 1, 5, 15, 13];<br>
+                var sumOfNumbers = 0,<br>
+                    <span class="m-28">avgOfNumbers = 0,</span><br>
+                    <span class="m-28">minNumber=skaiciuMasyvas[0],</span><br>
+                    <span class="m-28">maxNumber=skaiciuMasyvas[0];</span><br><br>
+                
+                for(let i = 0; i < skaiciuMasyvas.length; i++) {<br>
+                    <span class="m-28">sumOfNumbers += skaiciuMasyvas[i];</span><br>
+                    <span class="m-28">if(skaiciuMasyvas[i] > maxNumber) {</span><br>
+                        <span class="m-56">maxNumber = skaiciuMasyvas[i];</span><br>
+                    <span class="m-28">}</span><br>
+                    <span class="m-28">if(skaiciuMasyvas[i] minNumber) {</span><br>
+                        <span class="m-56">minNumber = skaiciuMasyvas[i];</span><br>
+                    <span class="m-28">}</span><br>
+                }<br><br>
+                
+                avgOfNumbers=sumOfNumbers/skaiciuMasyvas.length;<br><br>
+                
+                console.log("Skaičių suma: " + sumOfNumbers);<br>
+                console.log("Skaičių vidurkis: " + parseFloat(avgOfNumbers).toFixed(2));<br>
+                console.log("Didžiausias skaičius: " + maxNumber);<br>
+                console.log("Mažiausias skaičius: " + minNumber);<br><br>
+                
+                <span class="comment">// Perdavimas į html //</span><br>
+                
+                var outPriceWithPVM = document.querySelector(".outPriceWithPVM");<br>
+                var outPVM = document.querySelector(".outPVM");<br>
+                var outPrice = document.querySelector(".outPrice");<br>
+                <span class="comment">//------//</span><br>
+                var outFirstName = document.querySelector(".firstName");<br>
+                var outLastName = document.querySelector(".lastName");<br>
+                var outInsertedNumber = document.querySelector(".insertedNumber");<br>
+                var outInsertedNumberName = document.querySelector(".insertedNumberName");<br>
+                <span class="comment">//------//</span><br>
+                var outNumberArray = document.querySelector(".numberArray");<br>
+                var outNumberArraySum = document.querySelector(".numberArraySum");<br>
+                var outNumberArrayAvg = document.querySelector(".numberArrayAvg");<br>
+                var outNumberArrayMax = document.querySelector(".numberArrayMax");<br>
+                var outNumberArrayMin = document.querySelector(".numberArrayMin");<br>
+                <span class="comment">//------//</span><br>
+                outPriceWithPVM.innerHTML = priceWithPVM.toFixed(2);<br>
+                outPVM.innerHTML = pricePVM.toFixed(2);<br>
+                outPrice.innerHTML = commodityPrice.toFixed(2);<br>
+                <span class="comment">//------//</span><br>
+                outFirstName.innerHTML = firstName;<br>
+                outLastName.innerHTML = lastName;<br>
+                outInsertedNumber.innerHTML = insertedNumber;<br>
+                outInsertedNumberName.innerHTML = GoTnames[insertedNumber-1];<br>
+                <span class="comment">//------//</span><br>
+                outNumberArray.innerHTML = skaiciuMasyvas;<br>
+                outNumberArraySum.innerHTML = sumOfNumbers;<br>
+                outNumberArrayAvg.innerHTML = parseFloat(avgOfNumbers).toFixed(2);<br>
+                outNumberArrayMax.innerHTML = maxNumber;<br>
+                outNumberArrayMin.innerHTML = minNumber;</code>
+        </div>
+
+        <div class="right">
+            <h2>Pirma užduotis</h2>
+
+            <div class="container">
+                <div class="content">
+                    <h5>Prekės kaina su PVM:</h5>
+                    <p class="outPriceWithPVM"></p><p>€</p>
+                </div>
+                <div class="content">
+                    <h5>PVM:</h5>
+                    <p class="outPVM"></p><p>€</p>
+                </div>
+                <div class="content">
+                    <h5>Prekės kaina be PVM:</h5>
+                    <p class="outPrice"></p><p>€</p>
+                </div>
+            </div>
+
+            <h2>Antra užduotis</h2>
+
+            <div class="container">
+                <div class="content">
+                    <h5>Pirmas masyvo elementas/personažas:</h5>
+                    <p class="firstName"></p>
+                </div>
+                <div class="content">
+                    <h5>Paskutinis masyvo elementas/personažas:</h5>
+                    <p class="lastName"></p>
+                </div>
+                <div class="content">
+                    <h5>Įvestas personažo eilės numeris:</h5>
+                    <p class="insertedNumber"></p>
+                </div>
+                <div class="content">
+                    <h5>Įvesto eilės numerio personažas:</h5>
+                    <p class="insertedNumberName"></p>
+                </div>
+            </div>
+
+            <h2>Papildoma užduotis</h2>
+
+            <div class="container">
+                <div class="content">
+                    <h5>Masyvo elementai:</h5>
+                    <p class="numberArray"></p>
+                </div>
+                <div class="content">
+                    <h5>Masyvo elementų suma:</h5>
+                    <p class="numberArraySum"></p>
+                </div>
+                <div class="content">
+                    <h5>Masyvo elementų vidurkis:</h5>
+                    <p class="numberArrayAvg"></p>
+                </div>
+                <div class="content">
+                    <h5>Masyvo didžiausias elementas:</h5>
+                    <p class="numberArrayMax"></p>
+                </div>
+                <div class="content">
+                    <h5>Masyvo mažiausias elementas:</h5>
+                    <p class="numberArrayMin"></p>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+   
+
+    
+
+    
+
+
+     <script src="script.js"></script>
+
+</body>
+</html>
